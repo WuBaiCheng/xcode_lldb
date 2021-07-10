@@ -1,5 +1,5 @@
-# xcode_lldb
-熟练掌握xcode自带的lldb，再深入定制开发自己需要的lldb插件
+# Xcode_lldb
+熟练掌握Xcode自带的lldb，再深入定制开发自己需要的lldb插件
 
 
 
@@ -32,4 +32,8 @@ https://zhuanlan.zhihu.com/p/34634263
 开发了自己定制化的lldb命令（插件）addBrs
 
 用法也很简单，```addBrs 类的全路径```
+
+
+
+lldb_test只是一个我用于Xcode演示的iOS项目
 
