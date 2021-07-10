@@ -37,3 +37,28 @@ https://zhuanlan.zhihu.com/p/34634263
 
 lldb_test只是一个我用于Xcode演示的iOS项目
 
+addBrs.py是核心实现代码，注意其中不能含中文
+
+另外，我还有个小需求没实现出来：如果只是敲入```addBrs```后直接回车，想实现成给当前断点走到的这个类全加上断点，省略掉传一个目标类的完整路径参数。
+
+也就是如果```addBrs```回车，则直接给当前断点走到的这个类的所有方法加断点；
+
+如果是```addBrs 目标类全路径```，则是给目标类的所有方法加断点。
+
+最后，为了能在Xcode打开后，自动载入自己写的lldb插件，这里需要在~/下创建.lldbinit文件（如果它原本不存在才创建）、打开、植入载入自己写的插件脚本
+
+```
+cd ~
+touch .lldbinit
+open .lldbinit
+```
+
+写入以下内容到.lldbinit中，后保存，杀死Xcode进程、重新打开即可生效：
+
+```command script import addBrs.py完整路径```
+
+例如我的：
+
+```
+command script import /Users/wubocheng/Documents/xcode_lldb/addBrs.py
+```
