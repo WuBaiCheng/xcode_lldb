@@ -30,6 +30,10 @@
     [self method3WithP1:@"p1" p2:@"p2"];
     [ViewController method4WithP1:@"p1" p2:@"p2"];
     [self method5WithP1:@"p1" p2:@"p2"];
+    [self method7];
+    [self method8WithP1:@"p1" p2:@"p2"];
+    [ViewController method9];
+    [ViewController method10WithP1:@"p1" p2:@"p2"];
     [self method6WithP1:@"p1" p2:@"p2"];
 }
 
@@ -52,6 +56,30 @@
 // 格式故意是凌乱的，验证我的正则能否正确处理
 -   (  void   )   method5WithP1   :    (  id   )   p1    p2   :   (  id   )   p2     {
     NSLog(@"%s %@ %@", __func__, p1, p2);
+}
+
+- (void)method7 {
+    for (int i = 0; i < 3; i++) {
+        NSLog(@"%s %d", __func__, i);
+    }
+}
+
+- (void)method8WithP1:(id)p1 p2:(id)p2 {
+    for (int i = 3; i > 0; i--) {
+        NSLog(@"%s %d - %@ %@", __func__, i, p1, p2);
+    }
+}
+
++ (void)method9 {
+    for (int i = 3; i > 0; i--) {
+        NSLog(@"%s %d", __func__, i);
+    }
+}
+
++ (void)method10WithP1:(id)p1 p2:(id)p2 {
+    for (int i = 0; i < 3; i++) {
+        NSLog(@"%s %d - %@ %@", __func__, i, p1, p2);
+    }
 }
 
 -   (  void   )   method6WithP1   :    (  id   )   p1    p2   :   (  id   )   p2

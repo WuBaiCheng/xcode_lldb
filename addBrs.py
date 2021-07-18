@@ -18,12 +18,14 @@ def feFormat(s, className):
         i = re.sub(' +:', ':', i)
         res3 = ''.join(re.findall('[0-9a-zA-Z]+:', i))
         if res3 == '':
-            res3 = re.findall('[0-9a-zA-Z]+{', i)[0]
-            res3 = res3[:len(res3) - 1]
-
-        myCommand = 'br set -n "{}[{} {}]"'.format(i[0:1], className,res3)
-        print(myCommand)
-        myCommands.append(myCommand)
+            res4 = re.findall('[0-9a-zA-Z]+{', i)
+            if len(res4) > 0:
+                res3 = res4[0]
+                res3 = res3[:len(res3) - 1]
+        if res3 != '':
+            myCommand = 'br set -n "{}[{} {}]"'.format(i[0:1], className,res3)
+            print(myCommand)
+            myCommands.append(myCommand)
     return myCommands
 
 def addBrs(debugger, command, result, internal_dict):
@@ -41,4 +43,4 @@ def addBrs(debugger, command, result, internal_dict):
 
 def __lldb_init_module(debugger, internal_dict):
     debugger.HandleCommand('command script add -f addBrs.addBrs addBrs')
-    print('The python commands has been installed and is ready for use.')
+    print('addBrs loaded.')
