@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <objc/runtime.h>
 
 @interface AppDelegate ()
 
